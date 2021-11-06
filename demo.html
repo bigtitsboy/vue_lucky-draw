@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./vue.js" type="text/javascript" charset="utf-8"></script>
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+    <style>
+        html,
+        body {
+            height: 100%;
+        }
+        .outside {
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .buttons {
+            display: flex;
+            flex-direction: row;
+        }
+    </style>
+</head>
+<body>
+<div id="mydemo" class="outside">
+    <img src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png" alt="img">
+    <H1>{{showName}}</H1>
+    <div class="buttons">
+        <el-button type="primary" @click="changeUser" round>begin</el-button>
+        <el-button type="primary" @click="stopTimer" round>stop</el-button>
+    </div>
+</div>
+<script>
+    const vm = new Vue({
+        el: '#mydemo',
+        data() {
+            return {
+                showName: 'Time to begin',
+                students: [
+                    "201811510401	陈建",
+                    "201811510402	邓思瑶",
+                    "201811510403	甘继发",
+                    "201811510404	黄嘉杰",
+                    "201811510405	冷泽奇",
+                    "201811510406	李福川",
+                    "201811510407	李高",
+                    "201811510408	李琳",
+                    "201811510409	李顺",
+                    "201811510411	李伟",
+                    "201811510412	梁灿",
+                    "201811510413	梁旺",
+                    "201811510414	林少锋",
+                    "201811510415	林伟恒",
+                    "201811510416	罗福生",
+                    "201811510417	孟亚涛",
+                    "201811510418	裴志朋",
+                    "201811510419	邱强强",
+                    "201811510420	宋凯文",
+                    "201811510421	苏雨明",
+                    "201811510423	王彬",
+                    "201811510424	王文豪",
+                    "201811510425	魏炜强",
+                    "201811510426	温佳旺",
+                    "201811510427	吴百全",
+                    "201811510428	肖建阳",
+                    "201811510429	谢磊",
+                    "201811510430	徐渊",
+                    "201811510431	颜磊",
+                    "201811510432	杨海涛",
+                    "201811510433	余耿耿",
+                    "201811510434	余勇艺",
+                    "201811510435	曾晖镇",
+                    "201811510436	张权睿",
+                    "201811510437	张元荧",
+                    "201811510438	赵连威",
+                    "201811510439	周超",
+                    "201811510440	仵文卓"
+                ],
+                timer: null
+            }
+        },
+        methods: {
+            changeUser() {
+                if (this.timer !== null) {
+                    clearInterval(this.timer)
+                }
+                this.timer = setInterval(() => {
+                    let num = Math.floor(Math.random() * this.students.length)
+                    // console.log(num)
+                    this.showName = this.students[num]
+                }, 100)
+            },
+            stopTimer() {
+                clearInterval(this.timer)
+            }
+        },
+        created() {
+            // this.changeUser()
+        }
+    })
+</script>
+</body>
+</html>
